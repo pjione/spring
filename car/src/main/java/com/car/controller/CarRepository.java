@@ -6,4 +6,5 @@ import com.car.controller.CarDTO;
 
 public interface CarRepository {
 	List<CarDTO> getAllCarList();
+	List<CarDTO> getAllCarListByCategory(String category);
 }

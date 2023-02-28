@@ -4,7 +4,7 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>main</title>
+	<title>게시판</title>
 </head>
 <body>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -44,14 +44,12 @@
 
   	<div class = "container">
   		<div class = "row" align = "center">
-  			<c:forEach items = "${carList }" var = "car">
-  				<div class = "col-md-4">
-  					<h3>${car.cid }</h3>
-  					<p>${car.cname }</p>
-  					<p>${car.cprice }</p>만원
-  					<p>${car.ccate }</p>
-  					<p>${car.ccate }</p>
-  					<p>${car.cdesc }</p>
+  			<c:forEach items = "${boardList }" var = "board">
+  				<div class = "col-md-3">
+  					<h3>${board.btitle }</h3>
+  					<p>${board.bcontent }</p>
+  					<p>${board.bauthor }</p>
+  					<p>${board.bdate }</p>
   				</div>
   			</c:forEach>
   		</div>
