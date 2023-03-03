@@ -7,17 +7,16 @@
 	<title>main</title>
 </head>
 <body>
-	<%@ include file = "header.jsp" %>
+<%@ include file = "header.jsp" %>
 	
 	<div class="alert alert-dark" role="alert">
 		<div class = "container">
-			 car shop 방문을 환영합니다.
+			 차량 상세 보기
 		</div>  
 	</div>
 
   	<div class = "container">
   		<div class = "row" align = "center">
-  			<c:forEach items = "${carList }" var = "car">
   				<div class = "col-md-4">
   					<h3>${car.cid }</h3>
   					<p>${car.cname }</p>
@@ -28,16 +27,7 @@
   					<p><a href = "/car?id=${car.cid }" class = "btn btn-Secondary"
   					role = "button">상세보기</a></p>
   				</div>
-  			</c:forEach>
-  				<h3>${carss.cid}2</h3>
-  				
   		</div>
-  		
-  
-  	
-  
   	</div>
-  	
-  					
 <%@ include file = "footer.jsp" %></body>
 </html>

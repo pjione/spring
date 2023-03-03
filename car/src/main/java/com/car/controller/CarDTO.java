@@ -17,21 +17,42 @@ public class CarDTO {
 		return cid;
 	}
 
+	public void setCid(String cid) {
+		this.cid = cid;
+	}
+
 	public String getCname() {
 		return cname;
+	}
+
+	public void setCname(String cname) {
+		this.cname = cname;
 	}
 
 	public String getCprice() {
 		return cprice;
 	}
 
+	public void setCprice(String cprice) {
+		this.cprice = cprice;
+	}
+
 	public String getCcate() {
 		return ccate;
+	}
+
+	public void setCcate(String ccate) {
+		this.ccate = ccate;
 	}
 
 	public String getCdesc() {
 		return cdesc;
 	}
+
+	public void setCdesc(String cdesc) {
+		this.cdesc = cdesc;
+	}
+
 	
 	
 }
