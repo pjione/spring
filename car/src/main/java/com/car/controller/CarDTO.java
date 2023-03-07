@@ -1,16 +1,37 @@
 package com.car.controller;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class CarDTO {
-	private String cid, cname, cprice, ccate, cdesc;
+	private String cid, cname, ccate, cdesc;
+	private int cprice;
+	private MultipartFile file;
 	
 	public CarDTO() {}
 
-	public CarDTO(String cid, String cname, String cprice, String ccate, String cdesc) {
+	public CarDTO(String cid, String cname, int cprice, String ccate, String cdesc) {
 		this.cid = cid;
 		this.cname = cname;
 		this.cprice = cprice;
 		this.ccate = ccate;
 		this.cdesc = cdesc;
+	}
+	public CarDTO(String cid, String cname, int cprice, String ccate, String cdesc, MultipartFile file) {
+		super();
+		this.cid = cid;
+		this.cname = cname;
+		this.cprice = cprice;
+		this.ccate = ccate;
+		this.cdesc = cdesc;
+		this.file = file;
+	}
+
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
 	}
 
 	public String getCid() {
@@ -29,11 +50,11 @@ public class CarDTO {
 		this.cname = cname;
 	}
 
-	public String getCprice() {
+	public int getCprice() {
 		return cprice;
 	}
 
-	public void setCprice(String cprice) {
+	public void setCprice(int cprice) {
 		this.cprice = cprice;
 	}
 

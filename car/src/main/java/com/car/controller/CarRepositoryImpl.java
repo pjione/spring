@@ -14,10 +14,10 @@ public class CarRepositoryImpl implements CarRepository {
 	private List<CarDTO> listOfCars = new ArrayList<CarDTO>();	
 	
 	public CarRepositoryImpl() {
-		CarDTO car1 = new CarDTO("c0001", "소나타", "2500", "중형","거의 새거");
-		CarDTO car2 = new CarDTO("c0002", "그랜저", "3500", "대형","아주 새거");
-		CarDTO car3 = new CarDTO("c0003", "아반테", "2000", "준중형","매우 새거");
-		CarDTO car4 = new CarDTO("c0004", "k5", "2600", "중형","엄청 새거");
+		CarDTO car1 = new CarDTO("c0001", "소나타", 2500, "중형","거의 새거");
+		CarDTO car2 = new CarDTO("c0002", "그랜저", 3500, "대형","아주 새거");
+		CarDTO car3 = new CarDTO("c0003", "아반테", 2000, "준중형","매우 새거");
+		CarDTO car4 = new CarDTO("c0004", "k5", 2600, "중형","엄청 새거");
 		
 		listOfCars.add(car1);
 		listOfCars.add(car2);
