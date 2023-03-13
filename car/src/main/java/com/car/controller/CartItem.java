@@ -1,15 +1,50 @@
 package com.car.controller;
 
 public class CartItem {
-	private CarDTO car;
-	private int quantity;
-	private int totalPrice;
+	
+	private CarDTO car;    //자동차
+	private int quantity;  //자동차 개수
+	private int totalPrice;//자동차 가격
+	
+	
+	public CarDTO getCar() {
+		return car;
+	}
+	public void setCar(CarDTO car) {
+		this.car = car;
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+		this.updateTotalPrice();
+	}
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+	public CartItem() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public CartItem(CarDTO car) {
+		super();
+		this.car = car;
+		this.quantity = 1;
+		this.totalPrice = car.getCprice();
+	}
+	
 	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((car == null) ? 0 : car.hashCode());
+		result = prime * result + quantity;
+		result = prime * result + totalPrice;
 		return result;
 	}
 	@Override
@@ -26,40 +61,22 @@ public class CartItem {
 				return false;
 		} else if (!car.equals(other.car))
 			return false;
+		if (quantity != other.quantity)
+			return false;
+		if (totalPrice != other.totalPrice)
+			return false;
 		return true;
 	}
 	
+	
+	
 	public void updateTotalPrice() {
-		totalPrice = car.getCprice() * quantity;
+		
+		int price = this.car.getCprice();
+		totalPrice = this.quantity * price;
 	}
-	
-	public CartItem() {
-		super();
-	}
-	public CartItem(CarDTO car, int quantity, int totalPrice) {
-		super();
-		this.car = car;
-		this.quantity = quantity;
-		this.totalPrice = car.getCprice();
-	}
-	public CarDTO getCar() {
-		return car;
-	}
-	public void setCar(CarDTO car) {
-		this.car = car;
-	}
-	public int getQuantity() {
-		return quantity;
-	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-	public int getTotalPrice() {
-		return totalPrice;
-	}
-	public void setTotalPrice(int totalPrice) {
-		this.totalPrice = totalPrice;
-	}
+
 	
 	
+
 }

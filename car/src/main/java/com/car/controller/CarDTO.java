@@ -1,8 +1,11 @@
 package com.car.controller;
 
+import java.io.Serializable;
+
 import org.springframework.web.multipart.MultipartFile;
 
-public class CarDTO {
+@SuppressWarnings("serial")
+public class CarDTO implements Serializable{
 	private String cid, cname, ccate, cdesc;
 	private int cprice;
 	private MultipartFile file;

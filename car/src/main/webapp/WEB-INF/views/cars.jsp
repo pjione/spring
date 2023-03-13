@@ -2,18 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
 	<title>main</title>
 </head>
 <body>
-	<%@ include file = "header.jsp" %>
-	
-	<div class="alert alert-dark" role="alert">
-		<div class = "container">
-			 car shop 방문을 환영합니다.
-		</div>  
-	</div>
 
   	<div class = "container">
   		<div class = "row" align = "center">
@@ -39,7 +33,5 @@
  
   
   	</div>
-  	
-  					
-<%@ include file = "footer.jsp" %></body>
+  </body>
 </html>
