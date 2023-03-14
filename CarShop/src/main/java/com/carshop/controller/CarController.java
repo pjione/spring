@@ -112,6 +112,32 @@ public class CarController {
 		carService.deleteCar(cid);
 		return "/product";
 	}
+	@GetMapping("/update")
+	public String requestUpdateCarForm(@ModelAttribute("updateCar") CarDTO car, Model model,  @RequestParam("cid") String cid) {
+		CarDTO carById = carService.getCarById(cid);
+		model.addAttribute("car",carById);
+		return "updateCar";
+	}
+	@PostMapping("/update")
+	public String submitUpdateCar(@ModelAttribute("updateCar") CarDTO car) {
+		
+		MultipartFile carimage = car.getCarimage();
+		
+		String saveName = carimage.getOriginalFilename();
+		File saveFile = new File(uploadPath + "\\images", saveName);
+		
+		if (carimage != null && !carimage.isEmpty()) {
+			try {
+				carimage.transferTo(saveFile);
+				car.setCfilename(saveName);
+			} catch (Exception e) {
+				throw new RuntimeException("차량 이미지 업로드가 실패했습니다.");
+			}
+		}
+		
+		carService.setUpdateCar(car);
+		return "redirect:/cars";
+	}
 	
 
 	

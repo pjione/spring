@@ -61,6 +61,10 @@
 								<a id = "item" href="javascript:ajaxremoveFromCart('${car.cid}')"
 								class="btn btn-danger btn-sm">삭제</a>
 								</td>
+								<td>
+								<a href="/cars/update?cid=${car.cid}"
+								class="btn btn-primary btn-sm">수정</a>
+								</td>
 						</tr>
 					</c:forEach>
 			

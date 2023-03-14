@@ -40,4 +40,10 @@ public class CarServiceImpl implements CarService {
 		
 	}
 
+	@Override
+	public void setUpdateCar(CarDTO car) {
+		carRepository.setUpdateCar(car);
+		
+	}
+
 }

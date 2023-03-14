@@ -15,12 +15,13 @@
 <title><tiles:insertAttribute name="title" /></title>  
 </head>
 <body>
+<div class="container">
 <tiles:insertAttribute name="menu" /> 
 
 <div class="my-5">
 	<div class="alert alert-dark">
 		<div class="container">
-        <h1 class="display-3"><tiles:insertAttribute name="heading" /> </h1>  
+        <h1 class="display-3 my-5"><tiles:insertAttribute name="heading" /> </h1>  
         <p><tiles:insertAttribute name="subheading" /></p>  
 		</div>
 	</div>
@@ -33,6 +34,7 @@
     <div class="footer">
         <tiles:insertAttribute name="footer" />  
     </div>
+</div>
 </div>
 </body>
 </html>
