@@ -7,5 +7,38 @@
 		]]>
 		
 	</insert>
+	
+	<select id="select_detail" parameterType = "hashmap" resultType = "hashMap">
+		<![CDATA[
+			select * from book where bookid = #{bookid}
+		]]>
+	</select>
+	
+	<select id="select_all" parameterType="hashMap"
+		resultType="hashMap">
+    <![CDATA[
+ 		select * from book where 1=1
+    ]]>
+    <if test="keyword != null and keyword != ''">  
+	and (title like CONCAT('%',#{keyword},'%') or category like CONCAT('%',#{keyword},'%'))  
+	</if>  
+	order by date desc  
+	</select>
+	<!-- <select id="select_all" resultType = "hashMap">
+		<![CDATA[
+			select * from book order by date desc
+		]]>
+	</select> -->
+	
+	<update id="update" parameterType = "hashmap">
+		<![CDATA[
+			UPDATE book SET title = #{title}, category = #{category}, price = #{price} where bookid = #{bookid}
+		]]>
+	</update>
+	<delete id="delete"  parameterType="hashmap">
+		<![CDATA[
+			DELETE FROM book where bookid = #{bookid}
+		]]>
+	</delete>
 </mapper>
  
