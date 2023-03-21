@@ -11,7 +11,7 @@
 <title>Car Detail</title>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 
-<script>
+<!-- <script>
 
 			
 	function ajaxremoveFromCart(item) {
@@ -33,7 +33,7 @@
 
 	    window.location.reload();
 	}
-	</script>
+	</script> -->
 
 </head>
 <body>
@@ -44,37 +44,30 @@
 			<table class="table table-hover">
 				<tr>
 					<th>번호</th>
-					<th>이름</th>
-					<th>가격</th>
-					<th>종류</th>
-					<th>상태</th>
+					<th>제목</th>
+					<th>작성자</th>
+					<th>조회수</th>
+					<th>좋아요</th>
+					<th>싫어요</th>
+					<th>작성일</th>
+					<th>비고</th>
 				</tr>
-			
-					<c:forEach items="${carList}" var="car">
+				<c:forEach items="${boardList}" var="board">
 						<tr>
-							<td>${car.cid}</td>
-							<td>${car.cname}</td>
-							<td>${car.cprice}</td>
-							<td>${car.ccate}</td>
-							<td>${car.cdesc}</td>
-							<td>
-								<%-- <a id = "item" href="javascript:ajaxremoveFromCart('${car.cid}')"
-								class="btn btn-danger btn-sm">삭제</a> --%>
-								<a id = "item" href="/cars/ajaxremove?cid=${car.cid}"
-								class="btn btn-danger btn-sm">삭제</a>
-								</td>
-								<td>
-								<a href="/cars/update?cid=${car.cid}"
-								class="btn btn-primary btn-sm">수정</a>
-								</td>
-						</tr>
-					</c:forEach>
-			
-				
+							<td>${board.bid}</td>
+							<td>${board.btitle}</td>
+							<td>${board.bwriter}</td>
+							<td>${board.bview}</td>
+							<td>${board.blike}</td>
+							<td>${board.bhate}</td>
+							<td>${board.bdate}</td>	
+							<td><a href = "/boards/view?bid=${board.bid}">상세보기</a></td>
+						</tr>			
+				</c:forEach>
 			</table>
-
-			<a href="<c:url value="/cars" />" class="btn btn-secondary">
-				&laquo; 목록으로</a>
+		
+			<a href="<c:url value="/boards/addBoard"/>" class="btn btn-secondary">
+				&laquo;글작성</a> 
 		</div>
 		<hr>
 

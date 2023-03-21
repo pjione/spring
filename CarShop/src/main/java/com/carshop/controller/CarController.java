@@ -1,6 +1,7 @@
 package com.carshop.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -20,13 +21,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.carshop.service.CarService;
+
 @RequestMapping("/cars")
 @Controller
 public class CarController {
 	
-	@Autowired
 	private CarService carService;
 	
+	@Autowired
+	public CarController(CarService carService) {
+		this.carService = carService;
+	}
 	@RequestMapping
 	public String CarList(Model model) {
 		List<CarDTO> list = carService.getAllCarList();
@@ -57,13 +63,15 @@ public class CarController {
 	}
 	
 	@GetMapping("/add")
-	public String requestAddCarForm(@ModelAttribute("NewCar") CarDTO car) {
+	public String requestAddCarForm() {
 		
 		return "addCar";
 	}
 	
-	@Resource(name="uploadPath")
-	private String uploadPath;
+	@Autowired
+	private HttpServletRequest request;
+	
+
 	
 	/*
 	 * @PostMapping("/add") public String submitAddNewCar(@ModelAttribute("NewCar")
@@ -81,23 +89,28 @@ public class CarController {
 	 * carService.setNewCar(car); return "redirect:/cars"; }
 	 */
 	@PostMapping("/add")
-	public String submitAddNewCar(@ModelAttribute("NewCar") CarDTO car) {
+	public String submitAddNewCar(@ModelAttribute CarDTO car) {
 		
 		MultipartFile carimage = car.getCarimage();
 		
 		String saveName = carimage.getOriginalFilename();
-		File saveFile = new File(uploadPath + "\\images", saveName);
 		
-		if (carimage != null && !carimage.isEmpty()) {
+		String realPath = request.getSession().getServletContext().getRealPath("/resources/images");
+		
+		File saveFile = new File(realPath, saveName);
+		
+		if(carimage != null && !carimage.isEmpty()) {
 			try {
 				carimage.transferTo(saveFile);
-				car.setCfilename(saveName);
-			} catch (Exception e) {
-				throw new RuntimeException("차량 이미지 업로드가 실패했습니다.");
+	            car.setCfilename(saveName);
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-		}
-		
+		}	
 		carService.setNewCar(car);
+		
 		return "redirect:/cars";
 	}
 	
@@ -106,11 +119,11 @@ public class CarController {
 		model.addAttribute("addTitle", "신규 차량 등록");
 	}
 	
-	@ResponseBody
-	@PostMapping("/ajaxremove")
+	//@ResponseBody
+	@GetMapping("/ajaxremove")
 	public String ajaxremoveCartByItem(@RequestParam("cid") String cid) {
 		carService.deleteCar(cid);
-		return "/product";
+		return "redirect:/cars/product";
 	}
 	@GetMapping("/update")
 	public String requestUpdateCarForm(@ModelAttribute("updateCar") CarDTO car, Model model,  @RequestParam("cid") String cid) {
@@ -124,8 +137,10 @@ public class CarController {
 		MultipartFile carimage = car.getCarimage();
 		
 		String saveName = carimage.getOriginalFilename();
-		File saveFile = new File(uploadPath + "\\images", saveName);
 		
+		String realPath = request.getSession().getServletContext().getRealPath("/resources/images");
+		
+		File saveFile = new File(realPath, saveName);
 		if (carimage != null && !carimage.isEmpty()) {
 			try {
 				carimage.transferTo(saveFile);

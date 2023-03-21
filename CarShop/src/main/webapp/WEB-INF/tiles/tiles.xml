@@ -11,6 +11,19 @@
         <put-attribute name="content" value="" />
         <put-attribute name="footer" value="/WEB-INF/tiles/template/footer.jsp"/>
     </definition> 
+     <definition name="addBoard" extends="base-Template">
+        <put-attribute name="title" value="Board" />
+        <put-attribute name="heading" value="게시판 작성" />
+        <put-attribute name="content" value="/WEB-INF/views/boards/addBoard.jsp" />
+    </definition>   
+     <definition name="list" extends="base-Template">
+        <put-attribute name="heading" value="게시판 목록" />
+        <put-attribute name="content" value="/WEB-INF/views/boards/list.jsp" />
+    </definition> 
+     <definition name="view" extends="base-Template">
+        <put-attribute name="heading" value="게시판 상세보기" />
+        <put-attribute name="content" value="/WEB-INF/views/boards/view.jsp" />
+    </definition>     
      <definition name="product" extends="base-Template"> 
         <put-attribute name="heading" value="제품 관리" />
         <put-attribute name="content" value="/WEB-INF/views/product.jsp" />

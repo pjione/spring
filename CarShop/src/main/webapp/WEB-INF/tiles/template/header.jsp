@@ -31,6 +31,19 @@
 				<li class="nav-item"><a class="nav-link" href="/cart">장바구니</a></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" role="button"
+					data-bs-toggle="dropdown" aria-expanded="false"> 게시판
+				</a>
+					<ul class="dropdown-menu">
+						<sec:authorize access="isAuthenticated()">
+							<li><a class="dropdown-item" href="/boards/addBoard">게시판 등록</a></li>
+							<li><a class="dropdown-item" href="/boards/list">게시판 목록</a></li>
+						</sec:authorize>
+					</ul>
+					
+					
+					</li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" role="button"
 					data-bs-toggle="dropdown" aria-expanded="false"> 회원관리
 				</a>
 					<ul class="dropdown-menu">
@@ -38,15 +51,15 @@
 					<sec:authorize access="isAnonymous()">
 						<li><a class="dropdown-item" href="/login">로그인</a></li>
 					</sec:authorize>
-						<sec:authorize access="isAuthenticated()">
-							<li><a class="dropdown-item" href="/logout">로그아웃</a></li>
-						</sec:authorize>
+					<sec:authorize access="isAuthenticated()">
+						<li><a class="dropdown-item" href="/logout">로그아웃</a></li>
+					</sec:authorize>
 						
 					</ul>
 					
 					
 					</li>
-					<sec:authorize access="hasAuthority('ROLE_ADMIN')">
+					<sec:authorize access="hasAuthority('USER_MANAGER')">
 					<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" role="button"
 					data-bs-toggle="dropdown" aria-expanded="false"> 관리자

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.carshop.mapper.UserRepository">
+	<insert id="join">
+		<![CDATA[
+			insert into users(username,password,uname,uemail) values (#{username},#{password},#{uname},#{uemail})
+		]]>
+	</insert>
+	<insert id="insertAuth">
+		<![CDATA[
+			insert into authorities(username) values (#{username})
+		]]>
+	</insert>
+</mapper>
+ 

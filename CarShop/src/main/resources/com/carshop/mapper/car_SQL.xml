@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.carshop.mapper.CarRepository">
+	<insert id="setNewCar">
+		<![CDATA[
+			insert into car(cid, cname, cprice, ccate, cdesc, cfilename) values (#{cid},#{cname},#{cprice},#{ccate},#{cdesc},#{cfilename})
+		]]>
+		
+	</insert>
+	
+	<select id="getCarById" resultType = "com.carshop.controller.CarDTO">
+		<![CDATA[
+			select * from car where cid = #{cid}
+		]]>
+	</select>
+	
+	<select id="getAllCarList" resultType="com.carshop.controller.CarDTO">
+    <![CDATA[
+ 		select * from car
+    ]]>
+    </select>
+   <!-- where 1=1 <if test="keyword != null and keyword != ''">  
+	and (title like CONCAT('%',#{keyword},'%') or category like CONCAT('%',#{keyword},'%'))  
+	</if>  
+	order by date desc  
+	</select> -->
+	
+	
+	<!-- <select id="select_all" resultType = "hashMap">
+		<![CDATA[
+			select * from book order by date desc
+		]]>
+	</select> -->
+	
+	<update id="setUpdateCar">
+		<![CDATA[
+			UPDATE car SET cname = #{cname}, cprice = #{cprice}, ccate = #{ccate}, cdesc = #{cdesc}, cfilename = IFNULL(#{cfilename},cfilename) where cid = #{cid}
+		]]>
+	</update>
+	<delete id="deleteCar">
+		<![CDATA[
+			DELETE FROM car where cid = #{cid}
+		]]>
+	</delete>
+</mapper>
+ 

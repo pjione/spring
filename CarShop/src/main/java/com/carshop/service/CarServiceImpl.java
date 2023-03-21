@@ -1,15 +1,21 @@
-package com.carshop.controller;
+package com.carshop.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.carshop.controller.CarDTO;
+import com.carshop.mapper.CarRepository;
+
 @Service
 public class CarServiceImpl implements CarService {
 	
-	@Autowired
 	private CarRepository carRepository;
+	
+	public CarServiceImpl(CarRepository carRepository) {
+		this.carRepository = carRepository;
+	}
 
 	@Override
 	public List<CarDTO> getAllCarList() {
@@ -23,20 +29,17 @@ public class CarServiceImpl implements CarService {
 	}
 	
 	public CarDTO getCarById(String carId) {
-		
-		CarDTO carById = carRepository.getCarById(carId);
-		
-		return carById;
+		return carRepository.getCarById(carId);
 		
 	}
 	
-	public void setNewCar(CarDTO car) {
-		carRepository.setNewCar(car);
+	public boolean setNewCar(CarDTO car) {
+		return carRepository.setNewCar(car) == 1 ? true : false;
 	}
 
 	@Override
-	public void deleteCar(String carId) {
-		carRepository.deleteCar(carId);
+	public boolean deleteCar(String carId) {
+		return carRepository.deleteCar(carId) == 1 ? true : false;
 		
 	}
 

@@ -19,24 +19,21 @@
 	</div>
 
 	
-	<form:form modelAttribute="NewCar" 
-			   action="./add?${_csrf.parameterName}=${_csrf.token}"
-	           class="form-horizontal"
-	           method = "post"
-	           enctype="multipart/form-data">
-	<fieldset>
-	<legend>${addTitle}</legend>
-	자동차 ID : <form:input path="cid" class="form-control"/>
-	자동차 이름 : <form:input path="cname" class="form-control"/>
-	자동차 가격 : <form:input path="cprice" class="form-control"/>
-	자동차 카테고리 : <form:input path="ccate" class="form-control"/>
-	자동차 소개 : <form:textarea path="cdesc" cols="50" rows="2" class="form-control"/>	
-	자동차 사진 : <form:input path="carimage" type="file" class="form-control"/>
-	<input type="submit" class="btn btn-primary" value="등록"/>
+	<div class = "container">
+  		<form class = "form-horiznotal" method = "post" enctype="multipart/form-data">
+ 			<fieldset><legend>${addTitle }</legend></fieldset>
+  			자동차 id : <input type="text" class = "form-control" name = "cid">
+  			자동차 이름 : <input type="text" class = "form-control" name = "cname">
+  			자동차 가격 : <input type="text" class = "form-control" name = "cprice">
+  			자동차 카테고리: <input type="text" class = "form-control" name = "ccate">
+  			자동차 소개 : <textarea class = "form-control" cols="50" rows="2" name = "cdesc"></textarea>
+  			사진 : <input type = "file" class = "Form-control" name = "carimage">
+  			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+  			<input type = "submit" class = "btn btn-primary" value = "등록">
+  		</form>
+  		
+  	</div>
 	
-	
-	</fieldset>
-	</form:form>
 
 
 

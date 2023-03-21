@@ -1,6 +1,8 @@
-package com.carshop.controller;
+package com.carshop.service;
 
 import java.util.List;
+
+import com.carshop.controller.CarDTO;
 
 public interface CarService {
 	
@@ -9,8 +11,8 @@ public interface CarService {
 	
 	CarDTO getCarById(String carId);
 	
-	void deleteCar(String carId);
-	void setNewCar(CarDTO car);
+	boolean deleteCar(String carId);
+	boolean setNewCar(CarDTO car);
 	void setUpdateCar(CarDTO car);
 
 }
