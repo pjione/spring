@@ -5,4 +5,5 @@ import com.carshop.domain.User;
 public interface UserRepository {
 	int join(User user);
 	int insertAuth(String username);
+	User existUsername(String email);
 }

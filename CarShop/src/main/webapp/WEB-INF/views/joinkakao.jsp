@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인</title>
+<title>회원가입</title>
 
     <style>
       .bd-placeholder-img {
@@ -105,9 +105,9 @@ body {
 
 
 <main class="form-signin w-100 m-auto">
-  <form action = "/login" method = "post">
+  <form method = "post">
     <img class="mb-4" src="http://austiny.snu.ac.kr/image/mine.jpg" alt="" width="72" height="57">
-    <h1 class="h3 mb-3 fw-normal">로그인 하세요</h1>
+    <h1 class="h3 mb-3 fw-normal">카카오 회원가입</h1>
 
     <div class="form-floating">
       <input type="text" name="username" class="form-control" id="floatingInput" placeholder="아이디를 입력하세요">
@@ -117,67 +117,27 @@ body {
       <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="암호를 입력하세요">
       <label for="floatingPassword">암호</label>
     </div>
+     <div class="form-floating">
+      <input type="text" name="uname" class="form-control" id="floatingInputName" placeholder="이름">
+      <label for="floatingInputName">이름</label>
+    </div>
+     <div class="form-floating">
+      <input type="text" name="uemail" class="form-control" id="floatingInputEmail" placeholder="이메일">
+      <label for="floatingInputEmail">이메일</label>
+    </div>
 
     <div class="checkbox mb-3">
       <label>
         <input type="checkbox" value="remember-me"> Remember me
       </label>
     </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit">로그인</button>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">회원가입</button>
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-    <a href = "javascript:kakaoLogin()">
-    	<img src = "/resources/images/kakaologin.png" height = "50" width = "300">
-    </a>
     <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
   </form>
 </main>
-<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<script>
-	Kakao.init("b228c636b51d3c9d389fa37c9bd68e8e");
-	
-	function kakaoLogin() {
-		window.Kakao.Auth.login({
-			//카카오 로그인 성공시 넘겨받을 항목들 / 카카오사이트에 설정한 값과 동일해야 한다. 
-			scope:'profile_nickname, account_email, gender',
-			success: function (authObj) {window.Kakao.API.request({url:'/v2/user/me',
-				success:res => {
-					const nickname = res.kakao_account.profile.nickname;
-					const email = res.kakao_account.email;
-					const gender = res.kakao_account.gender;
-					
-					console.log(nickname);
-					console.log(email);
-					console.log(gender);
-					
-					kakaoProcess(nickname, email, gender);
-				}
-			})}
-		})
-	}
-	
-	function kakaoProcess(nickname, email, gender) {
-		$.ajax({
-			type:"POST",
-			url:"/kakao",
-			data:{nickname:nickname,
-				  email:email,
-				  gender:gender},
-			beforeSend : function(xhr){
-				/* 스프링 시큐리티 설정으로 인해 전송 전에 헤더에 csrf값을 넣어야만한다.  */
-				xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-			},
-			success : function(result) {
-				alert("카카오 로그인 성공, 메인 화면으로 이동합니다.");
-				window.location.assign('/');
-			},
-			error : function(request, status, error){
-				alert("카카오 로그인 실패, 최초 한번 사이트 회원 가입을 하셔야 합니다.");
-				window.location.assign('/joinkakao');
-			}
-		})
-	}
-</script>
+
+
 
 
 

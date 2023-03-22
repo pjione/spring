@@ -15,7 +15,15 @@
         <put-attribute name="title" value="Board" />
         <put-attribute name="heading" value="게시판 작성" />
         <put-attribute name="content" value="/WEB-INF/views/boards/addBoard.jsp" />
-    </definition>   
+    </definition>
+    <definition name="join" extends="base-Template">
+        <put-attribute name="heading" value="회원가입" />
+        <put-attribute name="content" value="/WEB-INF/views/join.jsp" />
+    </definition>
+    <definition name="joinkakao" extends="base-Template">
+        <put-attribute name="heading" value="카카오 회원가입" />
+        <put-attribute name="content" value="/WEB-INF/views/joinkakao.jsp" />
+    </definition>         
      <definition name="list" extends="base-Template">
         <put-attribute name="heading" value="게시판 목록" />
         <put-attribute name="content" value="/WEB-INF/views/boards/list.jsp" />

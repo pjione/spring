@@ -30,5 +30,11 @@ public class UserServiceImpl implements UserService{
 	}
 
 
+	@Override
+	public User existUsername(String email) {
+		return userRepository.existUsername(email);
+	}
+
+
 	
 }

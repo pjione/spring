@@ -11,5 +11,10 @@
 			insert into authorities(username) values (#{username})
 		]]>
 	</insert>
+	<select id = "existUsername" resultType="com.carshop.domain.User">
+		<![CDATA[
+			select * from users where username = #{email}
+		]]>
+	</select>
 </mapper>
  
