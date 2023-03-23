@@ -8,6 +8,24 @@
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name ="host" value="smtp.gmail.com"></property>
+		<property name="port" value="587"></property>
+		<property name="username" value="yoonkeunsoo@gmail.com"></property>
+		<property name="password" value="szfnyyrczfumefbg"></property>
+		<property name="javaMailProperties">
+			<props>
+				<prop key = "mail.smtp.auth">true</prop>
+				<prop key = "mail.smtp.starttls.enable">true</prop>
+				<prop key = "mail.transport.protocol">smtp</prop>
+				<prop key = "mail.debug">true</prop>
+				<prop key = "mail.smtp.ssl.trust">smtp.gmail.com</prop>
+				<prop key = "mail.smtp.ssl.protocols">TLSv1.2</prop>
+			</props>
+		</property>
+	</bean>	
+		
+		
 	<!-- mysql연결 -->
 	<bean id="dataSource" 
 		  class="org.apache.commons.dbcp2.BasicDataSource"
