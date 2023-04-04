@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.carshop.controller.service.BoardService;
 import com.carshop.domain.Board;
-import com.carshop.service.BoardService;
 
 @Controller
 @RequestMapping(value = "/boards")

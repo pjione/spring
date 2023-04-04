@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.carshop.controller.service.UserService;
 import com.carshop.domain.User;
-import com.carshop.service.UserService;
 
 @Controller
 public class MemberController {

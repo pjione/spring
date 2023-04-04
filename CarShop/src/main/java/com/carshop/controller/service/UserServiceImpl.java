@@ -1,11 +1,11 @@
-package com.carshop.service;
+package com.carshop.controller.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.carshop.domain.User;
-import com.carshop.mapper.UserRepository;
+import com.carshop.controller.mapper.UserRepository;
 
 @Service
 public class UserServiceImpl implements UserService{

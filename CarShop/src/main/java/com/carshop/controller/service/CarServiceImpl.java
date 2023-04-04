@@ -1,4 +1,4 @@
-package com.carshop.service;
+package com.carshop.controller.service;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.carshop.controller.CarDTO;
-import com.carshop.mapper.CarRepository;
+import com.carshop.controller.mapper.CarRepository;
 
 @Service
 public class CarServiceImpl implements CarService {

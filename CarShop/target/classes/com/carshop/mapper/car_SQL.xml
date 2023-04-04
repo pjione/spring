@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.carshop.mapper.CarRepository">
+<mapper namespace="com.carshop.controller.mapper.CarRepository">
 	<insert id="setNewCar">
 		<![CDATA[
 			insert into car(cid, cname, cprice, ccate, cdesc, cfilename) values (#{cid},#{cname},#{cprice},#{ccate},#{cdesc},#{cfilename})
@@ -14,11 +14,7 @@
 		]]>
 	</select>
 	
-	<select id="getAllCarList" resultType="com.carshop.controller.CarDTO">
-    <![CDATA[
- 		select * from car
-    ]]>
-    </select>
+	
    <!-- where 1=1 <if test="keyword != null and keyword != ''">  
 	and (title like CONCAT('%',#{keyword},'%') or category like CONCAT('%',#{keyword},'%'))  
 	</if>  

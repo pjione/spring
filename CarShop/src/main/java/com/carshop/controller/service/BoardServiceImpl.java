@@ -1,11 +1,11 @@
-package com.carshop.service;
+package com.carshop.controller.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import com.carshop.domain.Board;
-import com.carshop.mapper.BoardRepository;
+import com.carshop.controller.mapper.BoardRepository;
 
 @Service
 public class BoardServiceImpl implements BoardService {

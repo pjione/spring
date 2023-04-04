@@ -1,13 +1,16 @@
-package com.carshop.mapper;
+package com.carshop.controller.mapper;
 
 import java.util.List;
 
+
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import com.carshop.controller.CarDTO;
 
+
 public interface CarRepository {
-	
+	@Select("select cprice from car")
 	List<CarDTO> getAllCarList();
 	List<CarDTO> getCarListByCategory(String category);
 	CarDTO getCarById(@Param("cid") String carId);

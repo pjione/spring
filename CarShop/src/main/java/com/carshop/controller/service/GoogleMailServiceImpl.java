@@ -1,4 +1,4 @@
-package com.carshop.service;
+package com.carshop.controller.service;
 
 import javax.mail.internet.MimeMessage;
 
